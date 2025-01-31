@@ -21,15 +21,20 @@
 		</section>
 		<section id="animations" class="flex vert">
 			<div class="flex vert">
-				<p>Enter a CSS <code>animation-timing-function</code> here.</p>
+				<p>
+					- Enter a CSS <code>animation-timing-function</code> here.<br />- Click
+					"Add Another" to add another easing function.<br />- If you want to
+					experiment with cubic beziers, you can use this
+					<a href="http://https://cubic-bezier.com/">tool</a>.
+				</p>
 				<input
 					type="text"
-					class="bezier text"
+					class="text"
 					title="Timing function"
 					data-order="0"
 				/>
-				<div class="container flex hori" id="balls">
-				</div>
+				<button type="button" id="addClown">Add Another</button>
+				<div class="container flex hori" id="balls"></div>
 			</div>
 		</section>
 	</body>

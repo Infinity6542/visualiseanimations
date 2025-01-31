@@ -55,8 +55,22 @@ body {
     background-color: var(--accent1);
 }
 
+.ball {
+	position: relative;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	background-color: var(--accent1);
+}
+
 #animations {
 	margin-left: auto;
 	margin-right: auto;
 	width: 1000px;
+}
+
+#balls {
+	margin-top: 20px;
+	flex-direction: column;
+	gap: 10px;
 }
