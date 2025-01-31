@@ -23,12 +23,12 @@ if (localStorage.getItem("noIntro") === "true") {
 	disappear("#foreground", true);
 } else if (localStorage.getItem("noIntro") === null) {
 	document.querySelector("#foreground button").addEventListener("click", () => {
-	disappear("#foreground", false);
-});
+		disappear("#foreground", false);
+	});
 } else {
 	document.querySelector("#foreground button").addEventListener("click", () => {
-	disappear("#foreground", false);
-});
+		disappear("#foreground", false);
+	});
 }
 
 let inputs = document.getElementsByClassName("text");
@@ -100,6 +100,7 @@ function updateAnimations() {
 					b.style.opacity = "20%";
 					b.style.transform = `translateX(${d.toString()}px)`;
 					b.style.top = y.getBoundingClientRect().top + "px";
+					y.style.background = colours[i];
 					// if (i > colours.length - 1) {
 					// 	do {
 					// 		i = i - colours.length;
@@ -124,7 +125,9 @@ function moreClowns(event) {
 	let x = document.createElement("input");
 	x.setAttribute(
 		"order",
-		(parseInt(event.target.previousElementSibling.getAttribute("order")) + 1).toString()
+		(
+			parseInt(event.target.previousElementSibling.getAttribute("order")) + 1
+		).toString()
 	);
 	x.classList.add("text");
 	event.target.parentNode.insertBefore(x, event.target);
