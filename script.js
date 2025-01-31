@@ -48,6 +48,8 @@ function updateAnimations() {
 		];
 		y.classList.add("ball");
 		y.style.background = colours[i];
+		inputs[i].style.border = `2px solid ${colours[i]}`;
+		inputs[i].style.borderRadius = "3px";
 		inputs[i].addEventListener("input", (event) => {
 			let z = event.target.value;
 			if (/cubic-bezier*/.test(z)) {
@@ -122,7 +124,7 @@ function moreClowns(event) {
 	let x = document.createElement("input");
 	x.setAttribute(
 		"order",
-		event.target.previousElementSibling.getAttribute("order") + 1
+		(parseInt(event.target.previousElementSibling.getAttribute("order")) + 1).toString()
 	);
 	x.classList.add("text");
 	event.target.parentNode.insertBefore(x, event.target);
