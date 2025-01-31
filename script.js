@@ -109,7 +109,7 @@ function updateAnimations() {
 					let b = document.createElement("div");
 					let d = new DOMMatrix(window.getComputedStyle(y).transform).m41;
 					b.classList.add("circle");
-					b.style.opacity = "20%";
+					b.style.opacity = "25%";
 					b.style.transform = `translateX(${d.toString()}px)`;
 					b.style.top = y.getBoundingClientRect().top + "px";
 					y.style.background = colours[i];
