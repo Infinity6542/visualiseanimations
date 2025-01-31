@@ -24,7 +24,14 @@ function updateAnimations() {
 		let x = inputs[i].getAttribute("order");
 		let y = document.createElement("div");
 		let a = 5;
-		let colours = ["#59dafb", "#ffb439", "#da609e", "#c2d94c"];
+		let colours = [
+			"#59dafb",
+			"#ffb439",
+			"#da609e",
+			"#c2d94c",
+			"#52bed9",
+			"#a169be",
+		];
 		y.classList.add("ball");
 		y.style.background = colours[i];
 		inputs[i].addEventListener("input", (event) => {
@@ -37,9 +44,27 @@ function updateAnimations() {
 				z = "[" + z + "]";
 				console.log(z);
 			}
+			// if (z.includes("-")) {
+			// 	z = z.split("-");
+			// 	for (let i = 0; i < z.length; i++) {
+			// 		if (z === "-") {
+			// 			let i = z.indexOf("-");
+			// 			if (i > -1) {
+			// 				z.splice(i, 1);
+			// 			}
+			// 		}
+			// 		z[i] = String(z[i]).charAt(0).toUpperCase() + String(z[i]).slice(1);
+			// 	}
+			// }
 			localStorage.setItem(x, z);
 		});
 		y.addEventListener("click", async () => {
+			for (let i = 0; i <= 15; i++) {
+				if (y.nextElementSibling === null) {
+				} else if (y.nextElementSibling.classList.contains("circle")) {
+					y.nextElementSibling.remove();
+				};
+			}
 			animate(
 				y,
 				{ translateX: 950 },
@@ -56,10 +81,17 @@ function updateAnimations() {
 					let d = new DOMMatrix(window.getComputedStyle(y).transform).m41;
 					console.log(d);
 					b.classList.add("circle");
-					b.style.background = colours[i];
 					b.style.opacity = "20%";
 					b.style.transform = `translateX(${d.toString()}px)`;
 					b.style.top = y.getBoundingClientRect().top + "px";
+					// if (i > colours.length - 1) {
+					// 	do {
+					// 		i = i - colours.length;
+					// 	} while (i > colours.length - 1);
+					// 	b.style.background = colours[i];
+					// } else {
+					// 	b.style.background = colours[i];
+					// }
 					y.parentNode.insertBefore(b, y.nextSibling);
 				}, (a / 16) * 1000);
 				setTimeout(() => {
@@ -83,8 +115,23 @@ function moreClowns(event) {
 }
 
 document.querySelector("#addClown").addEventListener("click", (event) => {
+	if (document.getElementsByClassName("ball").length >= 6) {
+		window.alert(
+			"Woah there. You can't focus on more than six balls at a time, can you?"
+		);
+		console.error("Only six balls permitted.");
+		return;
+	}
 	moreClowns(event);
 	updateAnimations();
+});
+
+document.querySelector("#play").addEventListener("click", () => {
+	for (let i = 0; i < document.getElementsByClassName("ball").length; i++) {
+		document
+			.getElementsByClassName("ball")
+			[i].dispatchEvent(new Event("click"));
+	}
 });
 
 updateAnimations();
