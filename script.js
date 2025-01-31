@@ -50,7 +50,6 @@ function updateAnimations() {
 		y.style.background = colours[i];
 		inputs[i].style.border = `2px solid ${colours[i]}`;
 		inputs[i].style.borderRadius = "3px";
-				y.setProperty("order", x);
 		inputs[i].addEventListener("input", (event) => {
 			let z = event.target.value;
 			if (/cubic-bezier*/.test(z)) {
