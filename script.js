@@ -86,6 +86,9 @@ function updateAnimations() {
 					ease[i] = parseFloat(ease[i]);
 				}
 			}
+			if (ease === null) {
+				ease = "linear";
+			}
 			for (let i = 0; i <= 15; i++) {
 				if (y.nextElementSibling === null) {
 				} else if (y.nextElementSibling.classList.contains("circle")) {
@@ -106,7 +109,6 @@ function updateAnimations() {
 				let c = setInterval(() => {
 					let b = document.createElement("div");
 					let d = new DOMMatrix(window.getComputedStyle(y).transform).m41;
-					console.log(d);
 					b.classList.add("circle");
 					b.style.opacity = "20%";
 					b.style.transform = `translateX(${d.toString()}px)`;
