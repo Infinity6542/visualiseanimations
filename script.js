@@ -50,6 +50,7 @@ function updateAnimations() {
 		y.style.background = colours[i];
 		inputs[i].style.border = `2px solid ${colours[i]}`;
 		inputs[i].style.borderRadius = "3px";
+				y.setProperty("order", x);
 		inputs[i].addEventListener("input", (event) => {
 			let z = event.target.value;
 			if (/cubic-bezier*/.test(z)) {
@@ -78,6 +79,9 @@ function updateAnimations() {
 			// }
 			localStorage.setItem(x, z);
 		});
+
+		y.setProperty("order", x);
+
 		y.addEventListener("click", async () => {
 			let ease = localStorage.getItem(x);
 			if (ease === null) {
@@ -129,7 +133,6 @@ function updateAnimations() {
 			});
 		});
 		document.querySelector("#balls").appendChild(y);
-		// y.setProperty("order", x);
 	}
 }
 
