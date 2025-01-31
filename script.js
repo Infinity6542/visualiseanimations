@@ -4,18 +4,32 @@ function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function disappear(target) {
+async function disappear(target, instant) {
 	let x = document.querySelector(target);
-	await animate(x, { opacity: 0 }, { duration: 0.2 }).then(() => {
+	if (instant) {
 		x.style.display = "none";
 		x.style.userSelect = "none";
 		x.style.pointerEvents = "none";
-	});
+	} else {
+		await animate(x, { opacity: 0 }, { duration: 0.2 }).then(() => {
+			x.style.display = "none";
+			x.style.userSelect = "none";
+			x.style.pointerEvents = "none";
+		});
+	}
 }
 
-document.querySelector("#foreground button").addEventListener("click", () => {
-	disappear("#foreground");
+if (localStorage.getItem("noIntro") === "true") {
+	disappear("#foreground", true);
+} else if (localStorage.getItem("noIntro") === null) {
+	document.querySelector("#foreground button").addEventListener("click", () => {
+	disappear("#foreground", false);
 });
+} else {
+	document.querySelector("#foreground button").addEventListener("click", () => {
+	disappear("#foreground", false);
+});
+}
 
 let inputs = document.getElementsByClassName("text");
 function updateAnimations() {
@@ -63,7 +77,7 @@ function updateAnimations() {
 				if (y.nextElementSibling === null) {
 				} else if (y.nextElementSibling.classList.contains("circle")) {
 					y.nextElementSibling.remove();
-				};
+				}
 			}
 			animate(
 				y,
@@ -132,6 +146,11 @@ document.querySelector("#play").addEventListener("click", () => {
 			.getElementsByClassName("ball")
 			[i].dispatchEvent(new Event("click"));
 	}
+});
+
+document.querySelector("#noIntro").addEventListener("click", () => {
+	localStorage.setItem("noIntro", "true");
+	disappear("#foreground", false);
 });
 
 updateAnimations();

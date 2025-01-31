@@ -74,3 +74,15 @@ body {
 	flex-direction: column;
 	gap: 10px;
 }
+
+button {
+	margin-top: 5px;
+}
+
+#animations p {
+	margin-top: 0;
+}
+
+#animations h1 {
+	margin-bottom: 0;
+}
