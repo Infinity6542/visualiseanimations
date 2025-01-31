@@ -92,12 +92,14 @@ function updateAnimations() {
 					ease[i] = parseFloat(ease[i]);
 				}
 			}
+
 			for (let i = 0; i <= 15; i++) {
 				if (y.nextElementSibling === null) {
 				} else if (y.nextElementSibling.classList.contains("circle")) {
 					y.nextElementSibling.remove();
 				}
 			}
+
 			animate(
 				y,
 				{ translateX: 950 },
@@ -108,6 +110,7 @@ function updateAnimations() {
 					ease: ease,
 				}
 			);
+
 			await sleep(a * 1000).then(() => {
 				let c = setInterval(() => {
 					let b = document.createElement("div");
@@ -132,6 +135,7 @@ function updateAnimations() {
 				}, a * 1000);
 			});
 		});
+		
 		document.querySelector("#balls").appendChild(y);
 	}
 }
