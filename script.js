@@ -79,7 +79,7 @@ function updateAnimations() {
 			localStorage.setItem(x, z);
 		});
 
-		y.setProperty("order", x);
+		y.setAttribute("data-order", x);
 
 		y.addEventListener("click", async () => {
 			let ease = localStorage.getItem(x);
