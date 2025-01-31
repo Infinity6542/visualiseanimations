@@ -156,6 +156,7 @@ document.querySelector("#addClown").addEventListener("click", (event) => {
 		window.alert(
 			"Woah there. You can't focus on more than six balls at a time, can you?"
 		);
+		umami.track("maxLimit");
 		console.error("Only six balls permitted.");
 		return;
 	}
