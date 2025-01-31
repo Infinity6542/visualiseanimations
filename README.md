@@ -18,4 +18,4 @@ This project uses vanilla HTML, CSS and JS, with most animations being made with
 # Credits and Attributions
 The main font in this project (as with most of my other projects) is [Satoshi](https://www.fontshare.com/fonts/satoshi), courtesy of the Indian Type Foundry.
 
-In the project, there is a link to [[https://cubic-bezier.com]], a wonderful tool for making cubic-beziers.
+In the project, there is a link to https://cubic-bezier.com, a wonderful tool for making cubic-beziers.
