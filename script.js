@@ -35,7 +35,7 @@ let inputs = document.getElementsByClassName("text");
 function updateAnimations() {
 	document.querySelector("#balls").innerHTML = "";
 	for (let i = 0; i < inputs.length; i++) {
-		let x = inputs[i].getAttribute("order");
+		let x = inputs[i].getAttribute("data-order");
 		let y = document.createElement("div");
 		let a = 5;
 		let colours = [
@@ -135,12 +135,17 @@ function updateAnimations() {
 function moreClowns(event) {
 	let x = document.createElement("input");
 	x.setAttribute(
-		"order",
+		"data-order",
 		(
-			parseInt(event.target.previousElementSibling.getAttribute("order")) + 1
+			parseFloat(
+				event.target.previousElementSibling.getAttribute("data-order")
+			) + 1
 		).toString()
 	);
 	x.classList.add("text");
+	if (localStorage.getItem(x.getAttribute("data-order")) != null) {
+		x.value = localStorage.getItem(x.getAttribute("data-order"));
+	}
 	event.target.parentNode.insertBefore(x, event.target);
 }
 
