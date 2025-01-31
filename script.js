@@ -56,9 +56,13 @@ function updateAnimations() {
 				console.log("True");
 				z = z.replace("cubic-bezier(", "");
 				z = z.replace(")", "");
-				// z = z.split(",");
-				z = "[" + z + "]";
+				z = z.split(",");
+				for (let i = 0; i < z.length; i++) {
+					z[i] = parseFloat(z[i]);
+				}
 				console.log(z);
+				localStorage.setItem(x, z);
+				console.log(localStorage.getItem(x));
 			}
 			// if (z.includes("-")) {
 			// 	z = z.split("-");
@@ -75,6 +79,13 @@ function updateAnimations() {
 			localStorage.setItem(x, z);
 		});
 		y.addEventListener("click", async () => {
+			let ease = localStorage.getItem(x);
+			if (ease.includes(",")) {
+				ease = ease.split(",");
+				for (let i = 0; i < ease.length; i++) {
+					ease[i] = parseFloat(ease[i]);
+				}
+			}
 			for (let i = 0; i <= 15; i++) {
 				if (y.nextElementSibling === null) {
 				} else if (y.nextElementSibling.classList.contains("circle")) {
@@ -88,7 +99,7 @@ function updateAnimations() {
 					duration: a,
 					repeat: 1,
 					repeatType: "reverse",
-					ease: localStorage.getItem(x),
+					ease: ease,
 				}
 			);
 			await sleep(a * 1000).then(() => {
