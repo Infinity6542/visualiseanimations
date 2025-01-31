@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Visualise Animations</title>
+		<link rel="stylesheet" href="\style.css" />
+		<link rel="stylesheet" href="\satoshi\Fonts\WEB\css\satoshi.css" />
+		<script src="\script.js" type="module" defer></script>
+	</head>
+	<body>
+		<section id="foreground" class="flex centre">
+			<div class="card flex vert textCentre">
+				<h1>Visualise Animations</h1>
+				<p>
+					We've all heard of ease, easeInOut and so on but what's the real
+					difference? Explore them here!
+				</p>
+				<button type="button">Let's go!</button>
+			</div>
+		</section>
+		<section id="animations" class="flex vert">
+			<div class="flex vert">
+				<p>Enter a CSS <code>animation-timing-function</code> here.</p>
+				<input
+					type="text"
+					class="bezier text"
+					title="Timing function"
+					data-order="0"
+				/>
+				<div class="container flex hori" id="balls">
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

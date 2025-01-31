@@ -1,0 +1,62 @@
+:root {
+	--bg: #000201;
+	--greenerBg: #0c0e0d;
+	--text: #f2f2f2;
+	--accent1: #59dafb;
+	--accent2: #a5fb59;
+	--dimText: #444444;
+}
+
+body {
+	font-family: Satoshi;
+}
+
+#foreground {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.flex {
+	display: flex;
+}
+
+.centre {
+	justify-content: center;
+	align-items: center;
+}
+
+.vert {
+	flex-direction: column;
+}
+
+.hori {
+	flex-direction: row;
+}
+
+.textCentre {
+	text-align: center;
+}
+
+.card {
+	max-width: 30%;
+	outline: 1px solid white;
+}
+
+.circle {
+	position: absolute;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: var(--accent1);
+}
+
+#animations {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+}
