@@ -80,14 +80,13 @@ function updateAnimations() {
 		});
 		y.addEventListener("click", async () => {
 			let ease = localStorage.getItem(x);
-			if (ease.includes(",")) {
+			if (ease === null) {
+				ease = "linear";
+			} else if (ease.includes(",")) {
 				ease = ease.split(",");
 				for (let i = 0; i < ease.length; i++) {
 					ease[i] = parseFloat(ease[i]);
 				}
-			}
-			if (ease === null) {
-				ease = "linear";
 			}
 			for (let i = 0; i <= 15; i++) {
 				if (y.nextElementSibling === null) {
