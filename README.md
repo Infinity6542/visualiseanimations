@@ -1,4 +1,4 @@
-# Visualise Animations\*
+# Visualise Animations
 
 ## What is Visualise Animations?
 
