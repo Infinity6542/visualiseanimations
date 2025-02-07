@@ -118,15 +118,7 @@ function updateAnimations() {
 					b.style.opacity = "25%";
 					b.style.transform = `translateX(${d.toString()}px)`;
 					b.style.top = y.getBoundingClientRect().top + "px";
-					y.style.background = colours[i];
-					// if (i > colours.length - 1) {
-					// 	do {
-					// 		i = i - colours.length;
-					// 	} while (i > colours.length - 1);
-					// 	b.style.background = colours[i];
-					// } else {
-					// 	b.style.background = colours[i];
-					// }
+					b.style.background = colours[i];
 					y.parentNode.insertBefore(b, y.nextSibling);
 				}, (a / 16) * 1000);
 				setTimeout(() => {
