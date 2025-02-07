@@ -37,7 +37,7 @@ function updateAnimations() {
 	for (let i = 0; i < inputs.length; i++) {
 		let x = inputs[i].getAttribute("data-order");
 		let y = document.createElement("div");
-		let a = 5;
+		let a = 3;
 		let colours = [
 			"#59dafb",
 			"#ffb439",
