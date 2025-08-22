@@ -6,8 +6,15 @@
 		<title>Visualise Animations</title>
 		<link rel="stylesheet" href="\style.css" />
 		<link rel="stylesheet" href="\satoshi\Fonts\WEB\css\satoshi.css" />
-		<!-- Mertics -->
-		<script defer src="https://cloud.umami.is/script.js" data-website-id="a6f5b4cd-b201-45ff-9ce8-a5c699562ea5" type="module"></script>
+		<!-- Metrics -->
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="a6f5b4cd-b201-45ff-9ce8-a5c699562ea5"
+			type="module"
+		></script>
+		<!-- GSAP -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 		<script src="\script.js" type="module" defer></script>
 	</head>
 	<body>
@@ -19,7 +26,9 @@
 					difference? Explore them here!
 				</p>
 				<button type="button" data-umami-event="pastIntro">Let's go!</button>
-				<button type="button" id="noIntro" data-umami-event="dontShowAgain">Don't show this again</button>
+				<button type="button" id="noIntro" data-umami-event="dontShowAgain">
+					Don't show this again
+				</button>
 			</div>
 		</section>
 		<section id="animations" class="flex vert">
@@ -31,11 +40,13 @@
 					better someday?
 				</p>
 				<p>
-					- Enter a CSS <code>animation-timing-function</code> here.<br />-
-					Click "Add Another" to add another easing function.<br />- If you want
-					to experiment with cubic beziers, you can use this
-					<a href="http://https://cubic-bezier.com/">tool</a>.<br />
-					- Please use camelCase instead of kebab-case where required.
+					- Enter a CSS <code>animation-timing-function</code> here.<br />
+					- Click "Add Another" to add another easing function.<br />
+					<!-- - If you want to experiment with cubic beziers, you can use this
+					<a href="http://https://cubic-bezier.com/">tool</a>.<br /> -->
+					- You may use <code>linear</code>, <code>ease-in</code>,
+					<code>ease-out</code> or <code>ease-in-out</code>. Otherwise, view
+					<a href="https://gsap.com/docs/v3/Eases/">GSAP documentation</a>.
 				</p>
 				<input
 					type="text"
@@ -44,8 +55,12 @@
 					data-order="0"
 					placeholder="linear"
 				/>
-				<button type="button" id="addClown" data-umami-event="addNewAnimation">Add Another</button>
-				<button type="button" id="play" data-umami-event="playAnimations">Play</button>
+				<button type="button" id="addClown" data-umami-event="addNewAnimation">
+					Add Another
+				</button>
+				<button type="button" id="play" data-umami-event="playAnimations">
+					Play
+				</button>
 				<div class="container flex hori" id="balls"></div>
 			</div>
 		</section>
