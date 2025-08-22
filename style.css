@@ -9,6 +9,8 @@
 
 body {
 	font-family: Satoshi;
+	background: var(--bg);
+	color: var(--text);
 }
 
 #foreground {
@@ -40,6 +42,12 @@ body {
 
 .textCentre {
 	text-align: center;
+}
+
+.text {
+	background: transparent;
+	color: var(--text);
+	padding: 10px;
 }
 
 .card {
