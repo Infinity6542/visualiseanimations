@@ -1,3 +1,6 @@
+> [!important]
+> I recently migrated to GSAP from Motion
+
 # Visualise Animations
 
 ## What is Visualise Animations?
@@ -13,7 +16,7 @@ The project supports up six different timing functions, including your favourite
 Each one of the six circles is colour-coded, allowing you to differentiate between them easily.
 Additionally, the circles move in both directions, with a "shadow path" being drawn on the way back. The closer the shadow circles are, the faster the animation was during that particular part.
 
-This project uses vanilla HTML, CSS and JS, with most animations being made with [Motion](https://motion.dev/).
+This project uses vanilla HTML, CSS and JS, with most animations being made with [GSAP](https://gsap.com).
 
 # Credits and Attributions
 The main font in this project (as with most of my other projects) is [Satoshi](https://www.fontshare.com/fonts/satoshi), courtesy of the Indian Type Foundry.

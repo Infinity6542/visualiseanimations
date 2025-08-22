@@ -1,4 +1,4 @@
-import { animate } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+// import "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js";
 
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
@@ -11,7 +11,7 @@ async function disappear(target, instant) {
 		x.style.userSelect = "none";
 		x.style.pointerEvents = "none";
 	} else {
-		await animate(x, { opacity: 0 }, { duration: 0.2 }).then(() => {
+		await gsap.to(x, { opacity: 0, duration: 0.2 }).then(() => {
 			x.style.display = "none";
 			x.style.userSelect = "none";
 			x.style.pointerEvents = "none";
@@ -64,6 +64,7 @@ function updateAnimations() {
 				localStorage.setItem(x, z);
 				console.log(localStorage.getItem(x));
 			}
+			// TODO: I forgot what this does, take a look
 			// if (z.includes("-")) {
 			// 	z = z.split("-");
 			// 	for (let i = 0; i < z.length; i++) {
@@ -99,18 +100,24 @@ function updateAnimations() {
 				}
 			}
 
-			animate(
-				y,
-				{ translateX: 950 },
-				{
-					duration: a,
-					repeat: 1,
-					repeatType: "reverse",
-					ease: ease,
-				}
-			);
+			gsap.to(y, {
+				x: 950,
+				duration: a,
+				repeat: 1,
+				yoyo: true,
+				ease: ease,
+			});
 
+			// I think this is the function that adds the shadows?
 			await sleep(a * 1000).then(() => {
+				let b = document.createElement("div");
+				let d = new DOMMatrix(window.getComputedStyle(y).transform).m41;
+				b.classList.add("circle");
+				b.style.opacity = "25%";
+				b.style.transform = `translateX(${d.toString()}px)`;
+				b.style.top = y.getBoundingClientRect().top + "px";
+				b.style.background = colours[i];
+				y.parentNode.insertBefore(b, y.nextSibling);
 				let c = setInterval(() => {
 					let b = document.createElement("div");
 					let d = new DOMMatrix(window.getComputedStyle(y).transform).m41;
@@ -126,7 +133,7 @@ function updateAnimations() {
 				}, a * 1000);
 			});
 		});
-		
+
 		document.querySelector("#balls").appendChild(y);
 	}
 }
