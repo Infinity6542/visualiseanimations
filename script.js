@@ -82,14 +82,37 @@ function updateAnimations() {
 
 		y.addEventListener("click", async () => {
 			let ease = localStorage.getItem(x);
-			if (ease === null) {
-				ease = "linear";
-			} else if (ease.includes(",")) {
-				ease = ease.split(",");
-				for (let i = 0; i < ease.length; i++) {
-					ease[i] = parseFloat(ease[i]);
-				}
+			switch (ease) {
+				case "linear":
+					ease = "linear";
+					break;
+				case "ease-in":
+					ease = "power1.in";
+					break;
+				case "ease-out":
+					ease = "power1.out";
+					break;
+				case "ease-in-out":
+					ease = "power1.inOut";
+					break;
+				default:
+					if (ease === null) {
+						ease = "linear";
+					}
 			}
+			// if (ease === null) {
+			// 	ease = "linear";
+			// } else if (ease.includes(",")) {
+			// 	ease = ease.split(",");
+			// 	for (let i = 0; i < ease.length; i++) {
+			// 		ease[i] = parseFloat(ease[i]);
+			// 	}
+			// } else if (!ease.includes("power")) {
+			// 	ease = ease.replace("ease", "power.")
+			// 	let value = ease.slice(6, ease.length);
+			// 	value = value.charAt(0).toLowerCase() + value.slice(1);
+			// 	ease = `power2.${value}`;
+			// }
 
 			for (let i = 0; i <= 15; i++) {
 				if (y.nextElementSibling === null) {
@@ -101,9 +124,15 @@ function updateAnimations() {
 			gsap.to(y, {
 				x: 950,
 				duration: a,
-				repeat: 1,
-				yoyo: true,
 				ease: ease,
+			});
+			sleep(a * 1000).then(() => {
+				console.log(ease)
+				gsap.to(y, {
+					x: 0,
+					duration: a,
+					ease: ease,
+				});
 			});
 
 			// I think this is the function that adds the shadows?
