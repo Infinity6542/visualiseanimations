@@ -3,7 +3,9 @@
 	--greenerBg: #0c0e0d;
 	--text: #f2f2f2;
 	--accent1: #59dafb;
+	--dimAccent1: #3d98af;
 	--accent2: #a5fb59;
+	--dimAccent2: #66b322;
 	--dimText: #444444;
 }
 
@@ -11,6 +13,11 @@ body {
 	font-family: Satoshi;
 	background: var(--bg);
 	color: var(--text);
+}
+
+a {
+	text-decoration: underline;
+	color : var(--text);
 }
 
 #foreground {
@@ -21,6 +28,27 @@ body {
 	height: 100vh;
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
+}
+
+#foreground > * {
+	padding: 50px;
+	border-radius: 10px
+}
+
+#foreground h1 {
+	margin-bottom: 5px;
+}
+
+#foreground p {
+	margin-top: 5px;
+}
+
+#foreground > .flex > .flex {
+	margin-top: 25px
+}
+
+#noIntro {
+	background: var(--dimAccent2)
 }
 
 .flex {
@@ -52,8 +80,11 @@ body {
 }
 
 .card {
-	max-width: 30%;
-	outline: 1px solid white;
+	max-width: 720px;
+	width: 90%;
+	outline: 1px solid rgba(255,255,255,0.12);
+	background: rgba(255,255,255,0.02);
+	box-shadow: 0 6px 24px rgba(0,0,0,0.6);
 }
 
 .circle {
@@ -77,11 +108,15 @@ body {
 #animations {
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
+	max-width: 1000px;
+	width: calc(100% - 40px);
+	padding: 20px;
+	box-sizing: border-box;
 }
 
 #balls {
 	margin-top: 20px;
+	display: flex;
 	flex-direction: column;
 	gap: 10px;
 }
@@ -93,7 +128,22 @@ button {
 	flex-grow: 1;
 	padding: 10px;
 	border-radius: 20px;
+	cursor: pointer;
+	background: var(--accent2);
+	transition: all 0.3s ease;
 }
+
+button:hover {
+	box-shadow: var(--accent2) 0px 0px 10px;
+}
+
+.btnBar {
+	margin-top: 5px
+}
+
+/* button:nth-child(1) {
+	background: var(--accent2) !important;
+} */
 
 #animations p {
 	margin-top: 0;
@@ -104,7 +154,30 @@ button {
 }
 
 input {
-	margin-bottom: 5px;
+	margin-bottom: 15px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid rgba(255,255,255,0.06);
+	border-radius: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+	.hori { flex-direction: column; gap: 12px; }
+	.card { width: 95%; padding: 20px; }
+	#foreground > * { padding: 24px; }
+	#animations { width: calc(100% - 32px); padding: 16px; }
+	.btnBar { width: 100%; display: flex; flex-direction: column; }
+	button { width: 100%; padding: 12px; border-radius: 12px; }
+	.ball, .circle { height: 44px; width: 44px; }
+}
+
+@media (max-width: 480px) {
+	body { font-size: 14px; }
+	#foreground > * { padding: 16px; }
+	.card { padding: 14px; }
+	input { padding: 8px; }
+	.hori { gap: 8px; }
 }
 
 /* .btnBar {
