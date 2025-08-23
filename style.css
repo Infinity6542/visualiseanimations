@@ -38,6 +38,7 @@ body {
 
 .hori {
 	flex-direction: row;
+	gap: 20px;
 }
 
 .textCentre {
@@ -87,6 +88,11 @@ body {
 
 button {
 	margin-top: 5px;
+	background: var(--text);
+	border: 0;
+	flex-grow: 1;
+	padding: 10px;
+	border-radius: 20px;
 }
 
 #animations p {
@@ -100,3 +106,7 @@ button {
 input {
 	margin-bottom: 5px;
 }
+
+/* .btnBar {
+	transition: all 0.3s ease;
+} */

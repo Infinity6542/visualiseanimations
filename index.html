@@ -53,14 +53,21 @@
 					class="text"
 					title="Timing function"
 					data-order="0"
-					placeholder="linear"
+					placeholder="Timing function. Default: linear"                                                                    
 				/>
-				<button type="button" id="addClown" data-umami-event="addNewAnimation">
-					Add Another
-				</button>
-				<button type="button" id="play" data-umami-event="playAnimations">
-					Play
-				</button>
+				<div class="flex hori btnBar">
+					<button
+						type="button"
+						id="addClown"
+						data-umami-event="addNewAnimation"
+					>
+						Add Another
+					</button>
+					<button type="button" id="play" data-umami-event="playAnimations">
+						Play
+					</button>
+				</div>
+
 				<div class="container flex hori" id="balls"></div>
 			</div>
 		</section>

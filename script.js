@@ -114,7 +114,7 @@ function updateAnimations() {
 			// 	ease = `power2.${value}`;
 			// }
 
-			for (let i = 0; i <= 15; i++) {
+			for (let i = 0; i <= 16; i++) {
 				if (y.nextElementSibling === null) {
 				} else if (y.nextElementSibling.classList.contains("circle")) {
 					y.nextElementSibling.remove();
@@ -171,7 +171,7 @@ function moreClowns(event) {
 		"data-order",
 		(
 			parseFloat(
-				event.target.previousElementSibling.getAttribute("data-order")
+				event.target.parentNode.previousElementSibling.getAttribute("data-order")
 			) + 1
 		).toString()
 	);
@@ -179,7 +179,7 @@ function moreClowns(event) {
 	if (localStorage.getItem(x.getAttribute("data-order")) != null) {
 		x.value = localStorage.getItem(x.getAttribute("data-order"));
 	}
-	event.target.parentNode.insertBefore(x, event.target);
+	event.target.parentNode.parentNode.insertBefore(x, event.target.parentNode);
 }
 
 document.querySelector("#addClown").addEventListener("click", (event) => {
