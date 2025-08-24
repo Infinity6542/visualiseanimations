@@ -122,7 +122,7 @@ function updateAnimations() {
 			}
 
 			gsap.to(y, {
-				x: 950,
+				x: y.parentNode.getBoundingClientRect().width - y.getBoundingClientRect().width,
 				duration: a,
 				ease: ease,
 			});
