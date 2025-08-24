@@ -1,3 +1,6 @@
+gsap.registerPlugin(CustomEase)
+let globalI = 0;
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -63,6 +66,7 @@ function updateAnimations() {
 				console.log(localStorage.getItem(x));
 			}
 			// TODO: I forgot what this does, take a look
+			// This is probably the old script to convert to GSAP eases?
 			// if (z.includes("-")) {
 			// 	z = z.split("-");
 			// 	for (let i = 0; i < z.length; i++) {
@@ -121,20 +125,31 @@ function updateAnimations() {
 				}
 			}
 
+			if (ease.includes(",")) {
+				let n = globalI++;
+				n = n.toString();
+				CustomEase.create(
+					n,
+					ease
+				);
+				ease = n;
+			}
+
 			gsap.to(y, {
-				x: y.parentNode.getBoundingClientRect().width - y.getBoundingClientRect().width,
+				x:
+					y.parentNode.getBoundingClientRect().width -
+					y.getBoundingClientRect().width,
 				duration: a,
 				ease: ease,
 			});
 			sleep(a * 1000).then(() => {
-				console.log(ease)
+				console.log(ease);
 				gsap.to(y, {
 					x: 0,
 					duration: a,
 					ease: ease,
 				});
 			});
-
 			// I think this is the function that adds the shadows?
 			await sleep(a * 1000).then(() => {
 				let b = document.createElement("div");
@@ -171,7 +186,9 @@ function moreClowns(event) {
 		"data-order",
 		(
 			parseFloat(
-				event.target.parentNode.previousElementSibling.getAttribute("data-order")
+				event.target.parentNode.previousElementSibling.getAttribute(
+					"data-order"
+				)
 			) + 1
 		).toString()
 	);
