@@ -1,5 +1,6 @@
-gsap.registerPlugin(CustomEase)
+gsap.registerPlugin(CustomEase);
 let globalI = 0;
+let playing;
 
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
@@ -128,10 +129,7 @@ function updateAnimations() {
 			if (ease.includes(",")) {
 				let n = globalI++;
 				n = n.toString();
-				CustomEase.create(
-					n,
-					ease
-				);
+				CustomEase.create(n, ease);
 				ease = n;
 			}
 
@@ -149,6 +147,7 @@ function updateAnimations() {
 					duration: a,
 					ease: ease,
 				});
+				playing = false;
 			});
 			// I think this is the function that adds the shadows?
 			await sleep(a * 1000).then(() => {
@@ -213,10 +212,16 @@ document.querySelector("#addClown").addEventListener("click", (event) => {
 });
 
 document.querySelector("#play").addEventListener("click", () => {
-	for (let i = 0; i < document.getElementsByClassName("ball").length; i++) {
-		document
-			.getElementsByClassName("ball")
-			[i].dispatchEvent(new Event("click"));
+	if (playing) {
+		console.error("Already playing");
+		return;
+	} else {
+		playing = true;
+		for (let i = 0; i < document.getElementsByClassName("ball").length; i++) {
+			document
+				.getElementsByClassName("ball")
+				[i].dispatchEvent(new Event("click"));
+		}
 	}
 });
 
